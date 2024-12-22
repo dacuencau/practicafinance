@@ -54,3 +54,33 @@ pl=np.random.uniform(0,1,20)
 pl=np.sort(pl)
 
 print(" The highest three probability of loses are {}".format(pl[-3:]))
+
+y = 2
+c = 1.5
+Q = 5
+D = 0.01
+gamma = 0.4
+
+def supply(Q):
+    return (np.mean(pl[-Q:])* c)
+
+def demand(D):
+    return (np.sum(utility(y-D) >pl *utility(y-c)+(1-pl)*utility(y)))
+
+plt.figure()
+plt.plot([demand(i) for i in np.arange(0,1.9,0.02)], np.arange(0,1.9, 0.02),"r",label="insurance demand")
+plt.plot(range(1,21),[supply(j) for j in range(1,21)],"g",label="insurance supply")
+plt.ylabel("Average Cost")
+plt.xlabel("Number of People")
+plt.legend()
+plt.show()
+#############################este es un nuevo ejercicio#########################
+import yfinance as yf
+import numpy as np
+import pandas as pd
+import datetime
+import statsmodels.api as sm
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.tsa.seasonal import seasonal_decompose
+
+hola=2
